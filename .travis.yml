@@ -4,12 +4,21 @@ sudo: false
 
 install: true
 
+jdk:
+  - oraclejdk8
+
+addons:
+  apt:
+    packages:
+      - oracle-java8-installer
+
 android:
   components:
   - platform-tools
   - tools
-  - build-tools-23.0.2
-  - android-23
+  - build-tools-25.0.2
+  - android-25
 
 script: 
+  - jdk_switcher use oraclejdk8
   - ./gradlew relinker:testReleaseUnitTest
